@@ -1,0 +1,26 @@
+.card-container {
+    display: flex;
+    align-items: top;
+    padding-top: 25px;
+}
+
+.card-title {
+    width: 90%;
+    display: block;
+}
+
+.card-delete {
+    cursor: pointer;
+    text-align: right;
+    margin-left: 3%;
+    width: 7%;
+}
+
+.dragged {
+    width: 400px;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}

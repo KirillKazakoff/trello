@@ -1,0 +1,46 @@
+.manager {
+    margin-top: 70px;
+}
+
+.columns-container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    display: flex;
+}
+
+.column {
+    padding: 15px 0px;
+    border: 2px solid tan;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
+.column:nth-child(n+2) {
+    border-left: none;
+}
+
+.column-container {
+    width: 75%;
+}
+
+.column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__context-menu {
+    margin-bottom: 10px;
+}
+
+.add-card-container {
+    padding-top: 20px;
+    display: flex;
+    color: burlywood;
+}
+
+.add-card-title {
+    cursor: pointer;
+}
