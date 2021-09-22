@@ -1,12 +1,12 @@
 import Card from './card/card';
-import { cardT } from './card/card.tmp';
+import { cardT, emptyCardT } from './card/card.tmp';
 import engine from '../../../lib/engine/engine';
 
 export default class Column {
     constructor(container) {
         this.parentContainer = container;
         this.container = this.parentContainer.querySelector('.cards-container');
-        
+
         this.cards = [];
         this.initColumn();
 
@@ -40,8 +40,8 @@ export default class Column {
     }
 
     deleteEl(id) {
-        const card = this.getCard(id);
-        card.remove();
+        const delCard = this.getCard(id);
+        delCard.remove();
         const index = this.cards.findIndex((card) => card.id === id);
         this.cards.splice(index, 1);
     }

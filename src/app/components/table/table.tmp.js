@@ -20,7 +20,7 @@ const headerT = (name) => ({
 const cardsContainerT = (texts) => ({
     block: 'div',
     cls: 'cards-container',
-    content: texts.map(cardT),
+    content: [texts.map(cardT)],
 });
 
 const addCardContainerT = {
@@ -30,7 +30,7 @@ const addCardContainerT = {
         block: 'button',
         cls: 'add-card-title',
         content: '+ Add another card',
-    }
+    },
 };
 
 const columnContainerT = (colData) => ({
@@ -38,8 +38,6 @@ const columnContainerT = (colData) => ({
     cls: 'column-container',
     content: [headerT(colData.title), cardsContainerT(colData.content), addCardContainerT],
 });
-
-
 
 const columnT = (colData) => ({
     block: 'div',

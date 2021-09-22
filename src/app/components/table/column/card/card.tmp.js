@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { nanoid } from 'nanoid';
 
 const cardT = (title) => ({
@@ -17,7 +18,13 @@ const cardT = (title) => ({
     ],
     attrs: {
         id: nanoid(5),
-    }
+    },
 });
 
-export { cardT };
+const emptyCardT = {
+    block: 'div',
+    cls: 'empty-card-container',
+    content: '',
+};
+
+export { cardT, emptyCardT };

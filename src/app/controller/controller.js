@@ -13,21 +13,18 @@ let initData = [
     {
         title: 'done',
         content: ['some content there7', 'some content there8', 'some content there9'],
-    }
-]
-    
+    },
+];
 
 export default class Controller {
     constructor() {
         const saveLoader = new SaveLoad();
         const loadedData = saveLoader.load();
-        if (loadedData) initData = loadedData; 
+        if (loadedData) initData = loadedData;
 
         const table = new Table(initData);
         saveLoader.save(table.columns);
 
         window.addEventListener('unload', () => saveLoader.save(table.columns));
     }
-
-
 }

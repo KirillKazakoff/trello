@@ -30,7 +30,7 @@ export default class Table {
             const column = this.getColumn(e.target.closest('.column').className);
 
             this.form = new Form(e.target);
-            this.form.node.addEventListener('submit', (e) => this.onFormSubmit(e, column));
+            this.form.node.addEventListener('submit', (event) => this.onFormSubmit(event, column));
         }
     }
 
@@ -64,18 +64,28 @@ export default class Table {
 
             const columnFrom = this.getColumn(className);
             const draggedCard = columnFrom.getCard(cardContainer.id);
-            
-            draggedCard.initCoordinates(e);
-            const resultEl = await draggedCard.addDropListener();
-            
-            if (resultEl) {
-                const columnTo = this.getColumn(resultEl.closest('.column').className);
-                const {id, node} = draggedCard;
 
+            draggedCard.initCoordinates(e);
+
+            const resultEl = await draggedCard.addDropListener();
+            const resCardContainer = resultEl.closest('.card-container');
+            const resCardsContainer = resultEl.closest('.cards-container');
+            const resColumnContainer = resultEl.closest('.column');
+
+            if (!resCardsContainer) return;
+
+            const columnTo = this.getColumn(resColumnContainer.className);
+            const { id, node } = draggedCard;
+          
+
+            if (resCardContainer) {
+                if (id === resCardContainer.id) return;
                 columnFrom.deleteEl(id);
-                columnTo.insertBfr(node, resultEl);
+                columnTo.insertBfr(node, resCardContainer);
+            } else {
+                resCardsContainer.append(node);
+                columnTo.addCard(node);
             }
         }
     }
 }
-

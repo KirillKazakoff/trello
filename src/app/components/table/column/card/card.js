@@ -12,10 +12,6 @@ export default class Card {
         this.node.remove();
     }
 
-    toggleVision() {
-        this.node.classList.toggle('hidden');
-    }
-
     addDropListener() {
         this.node.classList.add('dragged');
         document.documentElement.addEventListener('mousemove', this.onDrag);
@@ -32,17 +28,14 @@ export default class Card {
             document.documentElement.removeEventListener('mouseup', this.handler);
 
             this.node.classList.remove('dragged');
-            this.toggleVision();
 
             const element = document.elementFromPoint(e.clientX, e.clientY);
-            let container = element.closest('.card-container');
-            this.toggleVision();
 
             if (this.fromPoint) {
-                this.fromPoint.style['margin-top'] = '';
+                this.fromPoint.style['padding-top'] = '';
             }
-            resolve(container);
-        }
+            resolve(element);
+        };
     }
 
     initCoordinates(e) {
@@ -55,14 +48,14 @@ export default class Card {
 
         this.initCoordinates(e);
 
-        const fromPoint = document.elementFromPoint(e.clientX, e.clientY)
+        const fromPoint = document.elementFromPoint(e.clientX, e.clientY);
         if (fromPoint.className === 'card-title' || fromPoint.className === 'card-container') {
             if (this.fromPoint) {
-                this.fromPoint.style['margin-top'] = '';
+                this.fromPoint.style['padding-top'] = '';
             }
 
             this.fromPoint = fromPoint.closest('.card-container');
-            this.fromPoint.style['margin-top'] = '25px';
+            this.fromPoint.style['padding-top'] = '50px';
         }
     }
 }
