@@ -26,10 +26,10 @@ export default class Card {
         return (e) => {
             document.documentElement.removeEventListener('mousemove', this.onDrag);
             document.documentElement.removeEventListener('mouseup', this.handler);
-
-            this.node.classList.remove('dragged');
-
+            
             const element = document.elementFromPoint(e.clientX, e.clientY);
+            
+            this.node.classList.remove('dragged');
 
             if (this.fromPoint) {
                 this.fromPoint.style['padding-top'] = '';
@@ -55,6 +55,7 @@ export default class Card {
             }
 
             this.fromPoint = fromPoint.closest('.card-container');
+
             this.fromPoint.style['padding-top'] = '50px';
         }
     }
